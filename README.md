@@ -53,9 +53,9 @@ This Laravel-based backend provides a comprehensive e-commerce API solution with
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=your_database_name
-   DB_USERNAME=your_database_user
-   DB_PASSWORD=your_database_password
+   DB_DATABASE=database_name
+   DB_USERNAME=database_user
+   DB_PASSWORD=database_password
    ```
 
 6. Run database migrations:
@@ -72,7 +72,20 @@ This Laravel-based backend provides a comprehensive e-commerce API solution with
 
 ### User Endpoints
 - `POST /register`: Register a new user
+````
+{
+    "name":"example",
+    "email": "example@email.com",
+    "password": "example"
+}
+````
 - `POST /login`: Authenticate user and receive access token
+````
+{
+    "email": "example@email.com",
+    "password": "example"
+}
+````
 - `GET /profile`: Retrieve authenticated user information
 - `POST /logout`: Log out the authenticated user
 
@@ -83,11 +96,28 @@ This Laravel-based backend provides a comprehensive e-commerce API solution with
 ### Shopping Cart Endpoints
 - `GET /cart`: View the authenticated user's cart contents
 - `POST /cart/add`: Add a product/variant to the cart
+````
+{
+    "variant_id": 1,
+    "quantity": 5 
+}
+````
 - `PUT /cart/update/{CartItemID}`: Update product quantity in cart
+````
+{
+    "quantity": 1 
+}
+````
 - `DELETE /cart/remove/{CartItemID}`: Remove a product from cart
 
 ### Order Endpoints
 - `POST /orders/create`: Create an order from the user's cart
+````
+{
+  "payment_method": "credit_card",
+  "shipping_address": "123 Main St, City, Country"
+}
+````
 - `GET /orders`: List all orders for the authenticated user
 - `GET /orders/{OrderID}`: Get details of a specific order
 
