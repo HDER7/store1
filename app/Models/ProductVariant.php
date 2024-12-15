@@ -19,7 +19,6 @@ class ProductVariant extends Model
     ];
 
     protected $casts = [
-        'price' => 'float',
         'stock_quantity' => 'integer'
     ];
 
