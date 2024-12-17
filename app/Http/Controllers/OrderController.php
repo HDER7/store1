@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\ShoppingCart;
+use App\OrderStatus;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,7 +60,7 @@ class OrderController extends Controller
                 'total_amount' => $cart->items->sum(function($item) {
                     return $item->quantity * $item->unit_price;
                 }),
-                'order_status' => 'pending',
+                'order_status' => OrderStatus::PENDING,
                 'payment_method' => $validated['payment_method'],
                 'shipping_address' => $validated['shipping_address'],
                 'order_date' => now()
