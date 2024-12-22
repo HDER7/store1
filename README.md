@@ -92,7 +92,7 @@ This Laravel-based backend provides a comprehensive e-commerce API solution with
 ### Product Endpoints
 - `GET /products`: List all available products with variants
 - `GET /products/{ProductID}`: Get details of a specific product
-- `GET /api/products/search` Search parameters (all optional):
+- `GET /products/search` Search parameters (all optional):
   - name
   - min_price
   - max_price
