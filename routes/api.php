@@ -9,6 +9,7 @@ use App\Http\Controllers\AuthController;
 Route::prefix('v1')->group(function () {
 
     Route::prefix('products')->group(function () {
+        Route::get('/search', [ProductController::class, 'search']);
         Route::get('/', [ProductController::class, 'index']);
         Route::get('/{id}', [ProductController::class, 'show']);
     });
