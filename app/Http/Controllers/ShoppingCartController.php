@@ -43,7 +43,8 @@ class ShoppingCartController extends Controller
         $variant = ProductVariant::findOrFail($validatedData['variant_id']);
 
         $cart = ShoppingCart::firstOrCreate([
-            'user_id' => Auth::id()
+            'user_id' => Auth::id(),
+            'status' => 1
         ]);
 
         $cartItem = CartItem::where('shopping_cart_id', $cart->id)
