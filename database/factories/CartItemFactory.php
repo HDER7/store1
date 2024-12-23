@@ -17,10 +17,10 @@ class CartItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'cart_id' => ShoppingCart::factory(),
+            'shopping_cart_id' => ShoppingCart::factory(),
             'variant_id' => ProductVariant::factory(),
             'quantity' => $this->faker->numberBetween(1, 5),
-            'unit_price' => $this->faker->numberBetween()
+            'unit_price' => $this->faker->numberBetween(2, 10, 1000)
         ];
     }
 }

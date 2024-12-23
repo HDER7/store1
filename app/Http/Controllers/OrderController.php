@@ -53,13 +53,15 @@ class OrderController extends Controller
         }
 
         DB::beginTransaction();
+        $total = 0;
+        foreach ($cart->items as $item) {
+            $total += $item->price * $item->quantity;
+        }
 
         try {
             $order = Order::create([
                 'user_id' => Auth::id(),
-                'total_amount' => $cart->items->sum(function($item) {
-                    return $item->quantity * $item->unit_price;
-                }),
+                'total_amount' => $total,
                 'order_status' => OrderStatus::PENDING,
                 'payment_method' => $validated['payment_method'],
                 'shipping_address' => $validated['shipping_address'],
